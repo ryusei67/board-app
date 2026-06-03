@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Home</title>
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+	<div class="container">
+		<div class="navbar">
+			<ul>
+				<li class="nav-item">
+					<a href="/" class="nav-link">Home</a>
+				</li>
+
+				<li class="nav-item">
+					<a href="/auth/login" class="nav-link">Login</a>
+				</li>
+
+				<li class="nav-item">
+					<a href="/auth/register" class="nav-link">Register</a>
+				</li>
+
+				<li class="nav-item">
+					<form action="/auth/logout" method="post" class="logout-form">
+						<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+
+						<button type="submit" class="logout-btn">
+							Logout
+						</button>
+					</form>
+				</li>
+			</ul>
+		</div>
+
+		<form th:action="@{/posts}" method="get" class="serachPost">
+			<div class="row">
+				<div class="row1">
+					<input type="text" name="keyword" class="keyword" placeholder="search" th:value="${param.keyword}">
+				</div>
+				<div class="optionSerach">
+					<select name="matchType" class="matchType">
+						<option value="contains" th:selected="${param.matchType?.toString() =='contains'}">部分一致</option>
+						<option value="startsWith" th:selected="${param.matchType?.toString() == 'startsWith'}">前方一致
+						</option>
+						<option value="endsWith" th:selected="${param.matchType?.toString() == 'endsWith'}">後方一致
+						</option>
+					</select>
+				</div>
+				<div class="optionSerach">
+					<select name="sortBy" class="matchType">
+						<option value="createAt" th:selected="${param.sortBy?.toString() =='createAt'}">作成日</option>
+						<option value="title" th:selected="${param.sortBy?.toString() == 'title'}">タイトル
+						</option>
+					</select>
+				</div>
+				<div class="optionSerach">
+					<select name="orderBy" class="matchType">
+						<option value="asc" th:selected="${param.orderBy?.toString() =='asc'}">昇順</option>
+						<option value="desc" th:selected="${param.orderBy?.toString() == 'desc'}">降順
+						</option>
+					</select>
+				</div>
+				<div>
+					<button type="submit" class="btn">検索</button>
+				</div>
+			</div>
+		</form>
+		<h1 class="title">Post List</h1>
+		<div class="header">
+			<h2>Post Create</h2>
+			<a th:href="@{/posts/create}" class="create">新規登録</a>
+		</div>
+		<table>
+			<thead>
+				<tr>
+					<th>Title</th>
+					<th>Content</th>
+					<th>Actions</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="post:${posts}">
+					<td>
+						<a th:href="@{/posts/{id}(id=${post.id})}" class="postId" th:text="${post.title}"></a>
+					</td>
+					<td th:text="${post.content}"></td>
+					<td>
+						<a th:href="@{/posts/{id}/edit(id=${post.id})}" class="edit">編集</a>
+						<a th:href="@{/posts/{id}/delete(id=${post.id})}" class="delete">削除</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="pagination">
+			<ul class="pagination-list">
+
+				<li th:class="${posts.number == 0} ? 'page-item disabled':'page-item'">
+					<a class="page-link"
+						th:href="@{/posts(page=${posts.number -1},keyword=${param.keyword},matchType=${param.matchType},orderBy=${param.orderBy},sortBy=${param.sortBy})}">
+						前
+					</a>
+				</li>
+
+				<li th:each="i:${#numbers.sequence(0,posts.totalPages -1 )}"
+					th:class="${i == posts.number} ? 'page-item active' : 'page-item'">
+					<a th:href="@{/posts(page=${i},keyword=${param.keyword},matchType=${param.matchType},orderBy=${param.orderBy},sortBy=${param.sortBy})}"
+						class="page-link active" th:text="${i +1}"></a>
+				</li>
+
+				<li th:class="${posts.number >= posts.totalPages -1} ? 'page-item disabled':'page-item'">
+					<a th:href="@{/posts(page=${posts.number +1})}" class="page-link">
+						次
+					</a>
+				</li>
+
+			</ul>
+		</div>
+	</div>
+</body>
+
+</html>

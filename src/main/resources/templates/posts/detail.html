@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Post Detail</title>
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+	<div class="container">
+		<h1 class="title">Post Detail</h1>
+		<div class="data">
+			<h2>Title</h2>
+			<p th:text="${post.title}"></p>
+		</div>
+		<div class="data">
+			<h2>Content</h2>
+			<p th:text="${post.content}"></p>
+		</div>
+		<a th:href="@{/posts}" class="back">戻る</a>
+	</div>
+</body>
+
+</html>
