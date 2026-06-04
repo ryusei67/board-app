@@ -507,3 +507,92 @@ textarea {
 	cursor: not-allowed;
 	pointer-events: none;
 }
+
+/* ===== Contact Form ===== */
+
+.contact {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 22px;
+}
+
+/* label */
+.contact label {
+	font-size: 15px;
+	font-weight: bold;
+	margin-bottom: 8px;
+	color: #444;
+}
+
+/* input textarea 共通 */
+.contact input,
+.contact textarea {
+	padding: 14px 16px;
+	font-size: 15px;
+	border: 1px solid #d1d5db;
+	border-radius: 12px;
+	background: #fafafa;
+	transition: all 0.3s ease;
+	box-sizing: border-box;
+	width: 100%;
+}
+
+/* focus */
+.contact input:focus,
+.contact textarea:focus {
+	outline: none;
+	border-color: #4f46e5;
+	background: white;
+	box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.15);
+}
+
+/* textarea */
+.contact textarea {
+	resize: vertical;
+	min-height: 140px;
+	line-height: 1.5;
+}
+
+/* ボタン */
+.contact .btn,
+.btn {
+	background: #4f46e5;
+	color: white;
+	border: none;
+	padding: 13px 18px;
+	border-radius: 12px;
+	font-size: 15px;
+	font-weight: bold;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	width: 100%;
+	margin-top: 10px;
+}
+
+/* hover */
+.contact .btn:hover,
+.btn:hover {
+	background: #4338ca;
+	transform: translateY(-2px);
+	box-shadow: 0 4px 10px rgba(79, 70, 229, 0.25);
+}
+
+/* ===== Contactボタン ===== */
+
+.homeContact {
+	background: #10b981;
+	color: white;
+	text-decoration: none;
+	padding: 14px 30px;
+	border-radius: 12px;
+	font-size: 16px;
+	font-weight: bold;
+	transition: all 0.3s ease;
+	box-shadow: 0 4px 10px rgba(16, 185, 129, 0.25);
+}
+
+/* hover */
+.homeContact:hover {
+	background: #059669;
+	transform: translateY(-3px);
+}
