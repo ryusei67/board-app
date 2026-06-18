@@ -51,6 +51,11 @@ body {
 	transition: 0.3s;
 }
 
+.error {
+	color: red;
+	margin-top: 20px;
+}
+
 .create:hover {
 	background-color: #4338ca;
 	transform: translateY(-2px);

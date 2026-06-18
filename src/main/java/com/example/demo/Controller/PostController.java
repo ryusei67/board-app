@@ -3,6 +3,7 @@ package com.example.demo.Controller;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.Entity.Post;
 import com.example.demo.Service.PostService;
+import com.example.demo.dto.PostForm;
+
+import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/posts")
@@ -51,9 +55,16 @@ public class PostController {
 	}
 
 	@PostMapping("/save")
-	public String save(Model model, Post post) {
-		Post posts = postService.save(post);
-		model.addAttribute("posts", posts);
+	public String save(@Valid @ModelAttribute("post") PostForm postForm, BindingResult result, Model model) {
+		if (result.hasErrors()) {
+			model.addAttribute("post", postForm);
+			return "posts/create";
+		}
+		Post post = new Post();
+		post.setTitle(postForm.getTitle());
+		post.setContent(postForm.getContent());
+		postService.save(post);
+		model.addAttribute("posts", post);
 		return "redirect:/posts";
 	}
 

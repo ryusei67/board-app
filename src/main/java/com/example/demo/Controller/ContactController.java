@@ -2,7 +2,9 @@ package com.example.demo.Controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -10,6 +12,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.example.demo.Entity.ContactData;
 import com.example.demo.Service.EmailService;
+
+import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/contact")
@@ -31,11 +35,11 @@ public class ContactController {
 
 	@PostMapping("/confirm")
 	public String confirmContact(
-			@RequestParam("name") String name,
-			@RequestParam("email") String email,
-			@RequestParam("message") String message,
-			Model model) {
-		model.addAttribute("contactData", new ContactData(name, email, message));
+			@Valid @ModelAttribute("contactData") ContactData contactData,
+			BindingResult result) {
+		if (result.hasErrors()) {
+			return "contact/form";
+		}
 		return "contact/confirm";
 
 	}
