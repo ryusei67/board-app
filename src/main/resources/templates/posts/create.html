@@ -10,6 +10,10 @@
 <body>
 	<div class="container">
 		<h1 class="title">Post Create</h1>
+		<div th:if="${errorMessage}" class="message error-message">
+			<strong th:text="${errorMessage}"></strong>
+			<button type="button" onclick="this.parentElement.style.display='none'">閉じる</button>
+		</div>
 		<form th:action="@{/posts/save}" method="post" th:object="${post}">
 			<div class="formData">
 				<label for="title">Title</label>

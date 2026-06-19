@@ -36,7 +36,10 @@
 				</li>
 			</ul>
 		</div>
-
+		<div th:if="${successMessage}" class="message success-message">
+			<strong th:text="${successMessage}"></strong>
+			<button type="button" onclick="this.parentElement.style.display='none'">閉じる</button>
+		</div>
 		<form th:action="@{/posts}" method="get" class="serachPost">
 			<div class="row">
 				<div class="row1">

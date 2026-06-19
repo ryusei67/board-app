@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.Entity.Post;
 import com.example.demo.Service.PostService;
@@ -55,14 +56,21 @@ public class PostController {
 	}
 
 	@PostMapping("/save")
-	public String save(@Valid @ModelAttribute("post") PostForm postForm, BindingResult result, Model model) {
+	public String save(@Valid @ModelAttribute("post") PostForm postForm,
+			BindingResult result,
+			RedirectAttributes redirectAttributes,
+			Model model) {
 		if (result.hasErrors()) {
+			model.addAttribute("errorMessage", "掲示板の投稿に失敗しました");
 			model.addAttribute("post", postForm);
 			return "posts/create";
 		}
 		Post post = new Post();
 		post.setTitle(postForm.getTitle());
 		post.setContent(postForm.getContent());
+
+		redirectAttributes.addFlashAttribute("successMessage", "掲示板の投稿に成功しました");
+
 		postService.save(post);
 		model.addAttribute("posts", post);
 		return "redirect:/posts";
@@ -85,18 +93,22 @@ public class PostController {
 	}
 
 	@PostMapping("/{id}")
-	public String update(@PathVariable Long id, @ModelAttribute Post post) {
+	public String update(@PathVariable Long id,
+			@ModelAttribute Post post,
+			RedirectAttributes redirectAttributes) {
 		Post update = postService.findById(id).orElseThrow();
 		update.setTitle(post.getTitle());
 		update.setContent(post.getContent());
+		redirectAttributes.addFlashAttribute("successMessage", "掲示板の更新に成功しました");
 		postService.save(update);
 		return "redirect:/posts";
 	}
 
 	//削除情報
 	@GetMapping("/{id}/delete")
-	public String delete(@PathVariable Long id) {
+	public String delete(@PathVariable Long id, RedirectAttributes redirectAttributes) {
 		postService.deleteById(id);
+		redirectAttributes.addFlashAttribute("successMessage", "掲示板の削除に成功しました");
 		return "redirect:/posts";
 	}
 
