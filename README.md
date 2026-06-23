@@ -68,9 +68,9 @@
   パスワードやメールアドレスなどの機密情報は、ご自身の環境に合わせて設定してください。
   
 ### データベース設定
-    spring.datasource.url=jdbc:mysql://localhost/{データベース名}
-    spring.datasource.username=root
-    spring.datasource.password={パスワード}
+  spring.datasource.url=jdbc:mysql://localhost/{データベース名}
+  spring.datasource.username=root
+  spring.datasource.password={パスワード}
 
 ### JPA設定
   spring.jpa.hibernate.ddl-auto=update
