@@ -34,7 +34,7 @@
 - Mail Sender
 
 
-(4)ローカル実行方法
+(3)ローカル実行方法
 
 ### 1.リポジトリのクローン
    https://github.com/ryusei67/board-app.git
