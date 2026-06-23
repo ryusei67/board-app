@@ -65,19 +65,18 @@
   　CREATE DATABASE board;
   ### 3.application.propertiesの設定
   application.propertiesをsrc/main/resources/application.propertiesに作成して実行環境に合わせて値を変更してください
+  パスワードやメールアドレスなどの機密情報は、ご自身の環境に合わせて設定してください。
   
-#データベース設定
+
 spring.datasource.url=jdbc:mysql://localhost/{データベース名}
 spring.datasource.username=root
 spring.datasource.password={パスワード}
 
 
-# JPA設定
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
 spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
 
-# Mail設定
 
 spring.mail.host=smtp.gmail.com
 spring.mail.port=587
@@ -86,7 +85,6 @@ spring.mail.password={Googleアプリパスワード}
 spring.mail.properties.mail.smtp.auth=true
 spring.mail.properties.mail.smtp.starttls.enable=true
 
-#カスタム設定
 mail.from ={送信元メールアドレス}
 mail.admin ={管理者宛メールアドレス}
 
