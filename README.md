@@ -66,6 +66,7 @@
   ### 3.application.propertiesの設定
   application.propertiesをsrc/main/resources/application.propertiesに作成して実行環境に合わせて値を変更してください
   パスワードやメールアドレスなどの機密情報は、ご自身の環境に合わせて設定してください。
+  ####
 
 ### データベース設定  
   spring.datasource.url=jdbc:mysql://localhost/{データベース名}
