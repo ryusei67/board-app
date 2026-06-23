@@ -15,21 +15,22 @@
 (2)使用技術
 
  ### バックエンド
- - Spring Boot
+ - Java -17
+ - Spring Boot 3.5.14
  - Spring Security
  - Spring Data JPA
 
 ### フロントエンド
  - HTML
  - CSS
- - Thymeleaf
+ - Thymeleaf  3.1.3 RELEASE
 
 ### データベース
- - MySQL
+ - MySQL 9.6.0
 
 ### その他
-- Lombok
-- Validation
+- Lombok 1.18.42
+- Validation　9.0.1
 - Mail Sender
 
 
@@ -40,7 +41,8 @@
   ### 2.MySQLでデータベースの作成
   　CREATE DATABASE board;
   ### 3.Application Propertiesの設定
-  　設定ファイルの作成.xlsxを参照
+  　Application Propertiesの設定手順および設定値については
+   別途お送りした「設定ファイルの作成.xlsx」にまとめておりますのでそちらを参照してください
   ### 4.アプリケーションの実行
   　エクリプスから実行
   ### 5.ブラウザからアクセス
