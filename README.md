@@ -51,8 +51,15 @@
 ### データベース
 - MySQL 9.6.0
 
-###その他
+### その他
 - Lombok 1.18.42
 - Validation 9.0.1
 - Spring Mail
+
+## 4.ローカル実行方法
+
+### 1.リポジトリのクローン
+```
+https://github.com/ryusei67/board-app.git
+```
 
