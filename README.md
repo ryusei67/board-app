@@ -74,15 +74,22 @@ spring.datasource.password={パスワード}
 
 ### JPA設定
 spring.jpa.hibernate.ddl-auto=update
+
 spring.jpa.show-sql=true
+
 spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
 
 ### mail設定
 spring.mail.host=smtp.gmail.com
+
 spring.mail.port=587
+
 spring.mail.username={送信元メールアドレス}
+
 spring.mail.password={Googleアプリパスワード}
+
 spring.mail.properties.mail.smtp.auth=true
+
 spring.mail.properties.mail.smtp.starttls.enable=true
 
 ### カスタム設定
