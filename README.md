@@ -13,20 +13,21 @@
   - フラッシュメッセージ機能
 
 (2)使用技術
- ###バックエンド
+
+ ### バックエンド
  - Spring Boot
  - Spring Security
  - Spring Data JPA
 
-###フロントエンド
+### フロントエンド
  - HTML
  - CSS
  - Thymeleaf
 
-###データベース
+### データベース
  - MySQL
 
-###その他
+### その他
 - Lombok
 - Validation
 - Mail Sender
