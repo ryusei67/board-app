@@ -69,7 +69,9 @@
   
 ### データベース設定
 spring.datasource.url=jdbc:mysql://localhost/{データベース名}
+
 spring.datasource.username=root
+
 spring.datasource.password={パスワード}
 
 ### JPA設定
