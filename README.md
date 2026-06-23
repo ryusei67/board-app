@@ -1,4 +1,3 @@
-# Board App
 
 ## 1. プロジェクト概要
 
@@ -74,8 +73,8 @@
 
 ### 1. リポジトリのクローン
 
-```bash
-git clone https://github.com/ryusei67/board-app.git
+```
+https://github.com/ryusei67/board-app.git
 ```
 
 ### 2. MySQLでデータベースを作成
